@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" id="Html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvest Sure Oil's'/</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
+        .fancy-button {
+            background: linear-gradient(to right, #38b000, #9ef01a); /* Green gradient */
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: all 0.3s ease-in-out; /* Smooth transitions */
+            border: none;
+            cursor: pointer;
+        }
+
+        .fancy-button:hover {
+            transform: scale(1.05); /* Slightly increase size on hover */
+            background: linear-gradient(to right, #9ef01a, #38b000); /* Reverse gradient */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+        }
+
+        .cancelbtn {
+            background-color: #f44336;
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .cancelbtn:hover {
+            transform: scale(1.05);
+            background-color: #e53935;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background: url('img_avatar2.png') no-repeat center center;
+            background-size: cover;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        .avatar {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #f44336;
+            cursor: pointer;
+        }
+    </style>
+</head>
+    <body class="flex flex-col items-start bg-gray-100 dark:bg-gray-900">
+    <nav class="flex flex-col lg:flex-row justify-between w-full h-auto bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500 p-4">
+        <div class="flex justify-between items-center w-full lg:w-auto">
+            <span class="px-6 py-2 font-semibold text-xl text-white transition-transform transform hover:-translate-y-1">
+                Harvest sure
+            </span>
+                 <button id="hamburger" class="lg:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5h14a1 1 0 110 2H3a1 1 0 010-2zM3 9h14a1 1 0 110 2H3a1 1 0 010-2zM3 13h14a1 1 0 110 2H3a1 1 0 010-2z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+        <ul id="mobileMenu" class="hidden lg:flex lg:flex-row lg:space-x-4 lg:items-center w-full bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500 lg:bg-transparent lg:shadow-none shadow-lg">
+            <a href=""><li class="text-white px-3 py-2 rounded hover:bg-orange-500">Home</li></a>
+            <a href=""><li class="text-white px-3 py-2 rounded hover:bg-orange-500">About Us</li></a>
+            <a href=""><li class="text-white px-3 py-2 rounded hover:bg-orange-500">Youtube</li></a>
+        </ul>
+    </nav>
+            <script>
+        // Hamburger Menu Toggle Logic
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden'); // Show or hide the menu
+            mobileMenu.classList.toggle('block');  // Ensure it takes up space when visible
+        });
+    </script>
+</body>
+</html>
