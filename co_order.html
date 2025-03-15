@@ -7,27 +7,31 @@
 </head>
 <body>
     <h2>Submit Form</h2>
-        <form action="save.php" method="POST">
-    <input type="text" name="name" placeholder="Enter your name" required>
-    <input type="email" name="email" placeholder="Enter your email" required>
-    <button type="submit">Submit</button>
-</form>
-<script>
-document.getElementById("myForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
-    
-    const formData = new FormData(this);
-    const response = await fetch("https://harvestsure.rf.gd/save.php", {
-        method: "POST",
-        body: formData
-    });
 
-    if (response.ok) {
-        alert("Form submitted successfully!");
-    } else {
-        alert("Error submitting form.");
-    }
-});
-</script>
+    <form id="myForm">
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+    document.getElementById("myForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+
+        try {
+            const response = await fetch("https://harvestsure.rf.gd/save.php", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.text();
+            alert(result); // Show success or error message
+        } catch (error) {
+            alert("Error submitting form. Please try again.");
+        }
+    });
+    </script>
 </body>
 </html>
