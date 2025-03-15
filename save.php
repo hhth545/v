@@ -1,23 +1,34 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Allow access from any website (fixes GitHub Pages issues)
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = isset($_POST["name"]) ? $_POST["name"] : '';
-    $email = isset($_POST["email"]) ? $_POST["email"] : '';
+if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
+    http_response_code(200);
+    exit();
+}
 
-    if (empty($name) || empty($email)) {
-        die("Error: Name and Email are required.");
-    }
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    http_response_code(405);
+    die("Error: Method Not Allowed. Use POST.");
+}
 
-    $data = "Name: $name, Email: $email\n";
+// Get form data
+$name = isset($_POST["name"]) ? trim($_POST["name"]) : '';
+$email = isset($_POST["email"]) ? trim($_POST["email"]) : '';
 
-    if (file_put_contents("data.txt", $data, FILE_APPEND)) {
-        echo "Form submitted successfully!";
-    } else {
-        echo "Error saving data.";
-    }
+if (empty($name) || empty($email)) {
+    die("Error: Name and Email are required.");
+}
+
+// Save to file
+$file = "data.txt"; 
+$data = "Name: $name, Email: $email\n";
+
+if (file_put_contents($file, $data, FILE_APPEND)) {
+    echo "Form submitted successfully!";
 } else {
-    echo "Invalid request method.";
+    echo "Error saving data.";
 }
 ?>
